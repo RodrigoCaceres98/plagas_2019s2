@@ -1,0 +1,61 @@
+import Plagas.*
+import Elementos.*
+test "testX" {
+	const cuca = new Cucarachas()
+	cuca.poblacion(12)
+	assert.that(cuca.transmiteEnfermedades())
+	assert.equals(96,cuca.peso())
+	assert.equals(6,cuca.nivelDeDanio())
+	
+	const mosqui = new Mosquitos()
+	mosqui.poblacion(70)
+	assert.notThat(mosqui.transmiteEnfermedades())
+	assert.equals(70,mosqui.nivelDeDanio())
+	
+	const mosqui1 = new Mosquitos()
+	mosqui1.poblacion(50)
+	assert.notThat(mosqui1.transmiteEnfermedades())
+	assert.equals(50,mosqui1.nivelDeDanio())
+	
+	const pulgui = new Pulgas()
+	pulgui.poblacion(9)
+	assert.notThat(pulgui.transmiteEnfermedades())
+	assert.equals(18,pulgui.nivelDeDanio())
+	
+	const garri = new Garrapatas()
+	garri.poblacion(15)
+	assert.that(garri.transmiteEnfermedades())
+	assert.equals(30,garri.nivelDeDanio())
+	
+	const casa = new Hogar()
+	casa.nivelDeMugre(30)
+	casa.conford(60)
+	assert.that(casa.esBueno())
+	casa.efectoDeLaPlaga(mosqui)
+	assert.equals(70,casa.nivelDeMugre())
+	
+	
+	const huerta = new Huerta()
+	huerta.cantDeProduccionPorMes(40)
+	assert.that(huerta.esBueno())
+	huerta.efectoDeLaPlaga(pulgui)
+	assert.equals(38.2,huerta.cantDeProduccionPorMes()) 
+	
+	const perro = new Mascota()
+	perro.nivelDeSalud(300)
+	assert.that(perro.esBueno())
+	perro.efectoDeLaPlaga(cuca)
+	assert.equals(6,perro.nivelDeSalud())
+	
+	
+	const barrio = new Barrios()
+	barrio.agregarElemento(casa)
+	barrio.agregarElemento(huerta)
+	barrio.agregarElemento(perro)
+	assert.notThat(barrio.esCopado())
+	
+	
+	
+	
+
+}
